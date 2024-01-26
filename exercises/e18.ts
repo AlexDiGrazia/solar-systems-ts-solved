@@ -11,20 +11,18 @@ interface hashMap {
 
 export function getGreatestDiscoveryYear(asteroids: Asteroid[]) {
   let max = 0;
-  let asteroid;
+  let greatestDiscoveryYear;
   asteroids.reduce((acc: hashMap, cur: Asteroid) => {
     acc[cur.discoveryYear] = (acc[cur.discoveryYear] ?? 0) + 1;
-    if (acc[cur.discoveryYear] !== undefined && acc[cur.discoveryYear]! > max) {
+    if (acc[cur.discoveryYear]! > max) {
       max = acc[cur.discoveryYear]!;
-      asteroid = cur.discoveryYear;
+      greatestDiscoveryYear = cur.discoveryYear;
     }
     return acc;
   }, {} as hashMap);
 
-  return asteroid;
+  return greatestDiscoveryYear;
 }
-
-// max = acc[cur.discoveryYear]! > max ? acc[cur.discoveryYear] : max
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-16"
